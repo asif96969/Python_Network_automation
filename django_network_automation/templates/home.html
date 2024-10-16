@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %} Title of about{% endblock %}
+{% block body %}
+<div class="container">
+     <div class="row">
+     <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body text-primary">
+          <h5 class="card-title">{{all_device}}</h5>
+          <div class="mr-3 text-right" style="font-size: 36px;">
+            <i class="fa fa-list fa-lg"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-primary border-primary text-white">Total Device</div>
+      </div>
+     </div>
+     <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body text-primary">
+          <h5 class="card-title">{{cisco_device}}</h5>
+          <div class="mr-3 text-right" style="font-size: 36px;">
+            <i class="fa fa-list fa-lg"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-primary border-primary text-white">Total Device</div>
+      </div>
+     </div>
+       <div class="col-sm-3">
+      <div class="card">
+        <div class="card-body text-primary">
+          <h5 class="card-title">{{mikrotik_device}}</h5>
+          <div class="mr-3 text-right" style="font-size: 36px;">
+            <i class="fa fa-list fa-lg"></i>
+          </div>
+        </div>
+        <div class="card-footer bg-primary border-primary text-white">Total Device</div>
+      </div>
+     </div>
+     </div>
+
+    <h3 class="mt-3 mb-3">LAST EVENT</h3>
+     <table class="table table-hover">
+     <thead>
+      <tr>
+        <th scope="col">SN</th>
+        <th scope="col">Target Device</th>
+        <th scope="col">Action</th>
+        <th scope="col">Status</th>
+        <th scope="col">Time</th>
+      </tr>
+     </thead>
+     <tbody>
+     {% for log in last_event %}
+      <tr>
+        <th scope="row"></th>
+        <td>{{log.target}}</td>
+        <td>{{log.action}}</td>
+        <td>{{log.status}}</td>
+        <td>{{log.time}}</td>
+      </tr>
+     {% endfor %}
+     </tbody>
+</div>
+{% endblock %}

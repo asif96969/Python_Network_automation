@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %} Title of about{% endblock %}
+{% block body %}
+<div class="container">
+    <form method='POST'>
+      {% csrf_token %}
+        <h4 class="mt-3">Chose Target:</h4>
+        {% for device in devices %}
+            <div><input type="checkbox" name="device" value="{{ device.id }}"> {{device.ip_address}} - {{device.vendor}}</div>
+        {% endfor %}
+        <br>
+<!--            <input type="checkbox" name="Show_Int">-->
+            <button type="submit" class="mt-3 btn btn-primary" name="Show_Int">Show Interface</button>
+<!--            <input type="checkbox" name="Show_ARP">-->
+            <button type="submit" class="mt-3 btn btn-primary" name="Show_ARP">Show ARP</button>
+            <h5 class="mt-1">Mikrotik</h5>
+            <textarea class="from-cntrol" rows="" cols="" name="mikrotik_route" style="height: 37px;"></textarea>
+            <h5 class="mt-1">Cisco</h5>
+            <textarea class="from-cntrol" rows="" cols="" name="cisco_route" style="height: 37px;"></textarea><br>
+            <button type="submit" class="mt-3 btn btn-primary" name="Show_Route">Show Route</button><br>
+
+<!--            <h5 class="mt-1">Mikrotik</h5>-->
+            <textarea class="from-cntrol" rows="" cols="" name="Dst_Ip_Mik" style="height: 37px;"></textarea>
+<!--            <h5 class="mt-1">Cisco</h5>-->
+            <textarea class="from-cntrol" rows="" cols="" name="Dst_Ip_Cis" style="height: 37px;"></textarea>
+<!--            <textarea class="from-cntrol" rows="" cols="" name="cisco_route" style="height: 37px;"></textarea><br>-->
+            <button type="submit" class="mt-3 btn btn-primary" name="ping">PING</button>
+    </form>
+</div>
+{% endblock %}
+
+
